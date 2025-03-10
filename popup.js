@@ -63,7 +63,7 @@ const processStream = async (reader, updateCallback) => {
 const summarizePage = async () => {
   statusEl.textContent = 'Content is extracted...';
 
-  // Lade API-Key, Zusammenfassungsoptionen und den benutzerdefinierten System-Prompt aus chrome.storage.sync
+  // Load API key, summary options and the custom system prompt from chrome.storage.sync
   const { apiKey, summaryLength, summaryStyle, customPrompt } = await chrome.storage.sync.get([
     'apiKey',
     'summaryLength',
@@ -81,7 +81,7 @@ const summarizePage = async () => {
 
   let pageText = '';
 
-  // Wenn YouTube-Video, versuche das Transkript zu extrahieren
+  // If YouTube video, try to extract the transcript
   if (tab.url.includes('youtube.com/watch')) {
     const [{ result: transcriptText }] = await chrome.scripting.executeScript({
       target: { tabId: tab.id },
@@ -123,14 +123,14 @@ const summarizePage = async () => {
   }
 
   // Standard-Prompt als Fallback
-  const defaultPrompt = `Erstelle eine prägnante, vollständige Zusammenfassung auf Deutsch. Nutze korrekte Grammatik, verzichte auf Füllwörter. Vorgaben: Länge ${
-    summaryLength || 'mittel'
-  }, Stil ${summaryStyle === 'bullet' ? 'Bullet-Points' : 'Fließtext'}.`;
+  const defaultPrompt = `Create a concise, complete summary in German. Use correct grammar, avoid filler words. Guidelines: Length ${
+    summaryLength || 'medium'
+  }, Stil ${summaryStyle === 'bullet' ? 'Bullet-Points' : 'Continuous text'}.`;
   // Nutze benutzerdefinierten Prompt, falls vorhanden, und ersetze Platzhalter {length} und {style}
   const systemPromptTemplate = customPrompt && customPrompt.trim() !== '' ? customPrompt : defaultPrompt;
   const systemPrompt = systemPromptTemplate
-    .replace('{length}', summaryLength || 'mittel')
-    .replace('{style}', summaryStyle === 'bullet' ? 'Bullet-Points' : 'Fließtext');
+    .replace('{length}', summaryLength || 'medium')
+    .replace('{style}', summaryStyle === 'bullet' ? 'Bullet-Points' : 'Continuous text');
 
   fullHistory = [
     { role: 'system', content: systemPrompt },
@@ -169,7 +169,7 @@ const summarizePage = async () => {
     statusEl.textContent = 'Summary successful!';
   } catch (error) {
     console.error(error);
-    statusEl.textContent = `Fehler: ${error.message}`;
+    statusEl.textContent = `Error: ${error.message}`;
   }
 };
 
@@ -199,7 +199,7 @@ const handleFollowup = async () => {
     }),
   });
 
-  if (!response.ok) throw new Error(`API-Fehler: ${response.status}`);
+  if (!response.ok) throw new Error(`API error: ${response.status}`);
 
   const newAssistantMsg = { role: 'assistant', content: '' };
   fullHistory.push(newAssistantMsg);

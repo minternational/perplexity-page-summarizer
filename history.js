@@ -1,10 +1,9 @@
-// history.js
 import { marked } from './marked.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   const historyContainer = document.getElementById('historyContainer');
 
-  // Lade die Historie aus chrome.storage.local
+  // Load the history from chrome.storage.local
   const { summaryHistory } = await chrome.storage.local.get('summaryHistory');
 
   if (!summaryHistory || summaryHistory.length === 0) {
@@ -12,12 +11,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     return;
   }
 
-  // Sortiere die Historie, sodass der neueste Eintrag zuerst angezeigt wird
+  // Sort the history so that the most recent entry is displayed first
   const sortedHistory = summaryHistory.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
-  // Speichere global, um später über Index darauf zugreifen zu können
+  // Save globally to be able to access it later via index
   window.globalHistory = sortedHistory;
 
-  // Leere den Container und füge die Einträge hinzu
+  // Empty the container and add the entries
   historyContainer.innerHTML = '';
   sortedHistory.forEach((entry, index) => {
     const entryDiv = document.createElement('div');
@@ -26,7 +25,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const date = new Date(entry.timestamp);
     const dateString = date.toLocaleString('de-DE');
 
-    // Erstelle einen Container für die Buttons (Löschen & Exportieren)
+    // Create a container for the buttons (Delete & Export)
     entryDiv.innerHTML = `
       <div class="entry-buttons">
         <button class="delete-btn" data-index="${index}">Delete</button>
@@ -38,7 +37,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     historyContainer.appendChild(entryDiv);
   });
 
-  // Event Listener für Lösch- und Export-Buttons
+  // Event listener for delete and export buttons
   historyContainer.addEventListener('click', async (e) => {
     if (e.target.classList.contains('delete-btn')) {
       const index = parseInt(e.target.getAttribute('data-index'));
@@ -54,16 +53,16 @@ document.addEventListener('DOMContentLoaded', async () => {
   });
 });
 
-// Exportiert den übergebenen Eintrag als Markdown-Datei
+// Exports the transferred entry as a Markdown file
 function exportEntry(entry) {
   const markdown = entry.text;
   const blob = new Blob([markdown], { type: 'text/markdown' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  // Dateiname mit Zeitstempel generieren, z.B. "summary-2023-03-09T12-34-56.md"
+  // Generate file name with timestamp, e.g. “summary-2023-03-09T12-34-56.md”
   const date = new Date(entry.timestamp);
-  const dateString = date.toISOString().slice(0,19).replace(/[:T]/g, "-");
+  const dateString = date.toISOString().slice(0, 19).replace(/[:T]/g, '-');
   a.download = `summary-${dateString}.md`;
   a.click();
   URL.revokeObjectURL(url);

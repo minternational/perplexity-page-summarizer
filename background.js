@@ -4,14 +4,14 @@ chrome.runtime.onInstalled.addListener(() => {
   // Kontextmenü-Eintrag für den selektierten Text
   chrome.contextMenus.create({
     id: 'summarizeHighlight',
-    title: 'Highlight zusammenfassen',
+    title: 'Summarize highlight',
     contexts: ['selection'],
   });
 
   // Neuer Kontextmenü-Eintrag für die gesamte Seite
   chrome.contextMenus.create({
     id: 'summarizePage',
-    title: 'Seite zusammenfassen',
+    title: 'Summarize page',
     contexts: ['page'],
   });
 });
@@ -30,7 +30,7 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
             return;
           }
           const selectedText = results[0].result;
-          console.log('Ausgewählter Text:', selectedText);
+          console.log('Selected text:', selectedText);
           if (selectedText && selectedText.trim().length > 0) {
             chrome.storage.local.set({ highlightedText: selectedText }, () => {
               chrome.action.openPopup();
@@ -50,7 +50,7 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
             return;
           }
           const fullPageText = results[0].result;
-          console.log('Voller Seitentext:', fullPageText);
+          console.log('Full page text:', fullPageText);
           if (fullPageText && fullPageText.trim().length > 0) {
             // Speichere den gesamten Seitentext, damit im Popup automatisch die Zusammenfassung gestartet wird
             chrome.storage.local.set({ highlightedText: fullPageText }, () => {

@@ -1,9 +1,12 @@
-// options.js
-
-// Beim Laden der Optionsseite den gespeicherten API Key, Zusammenfassungsoptionen und den benutzerdefinierten Prompt abrufen
+// Retrieve the saved API key, summary options and custom prompt when loading the options page
 document.addEventListener('DOMContentLoaded', async () => {
-  const { apiKey, summaryLength, summaryStyle, customPrompt } = await chrome.storage.sync.get(['apiKey', 'summaryLength', 'summaryStyle', 'customPrompt']);
-  
+  const { apiKey, summaryLength, summaryStyle, customPrompt } = await chrome.storage.sync.get([
+    'apiKey',
+    'summaryLength',
+    'summaryStyle',
+    'customPrompt',
+  ]);
+
   if (apiKey) {
     document.getElementById('apiKey').value = apiKey;
   }
@@ -18,18 +21,18 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 });
 
-// Eventlistener für den "Speichern"-Button: Speichert API-Key, Zusammenfassungsoptionen und benutzerdefinierten Prompt in chrome.storage.sync
+// Event listener for the “Save” button: Stores API key, summary options and custom prompt in chrome.storage.sync
 document.getElementById('saveBtn').addEventListener('click', async () => {
   const key = document.getElementById('apiKey').value.trim();
   const summaryLength = document.getElementById('summaryLength').value;
   const summaryStyle = document.getElementById('summaryStyle').value;
   const customPrompt = document.getElementById('customPrompt').value;
-  
+
   if (key.length === 0) {
-    document.getElementById('message').textContent = 'Bitte einen gültigen API-Schlüssel eingeben.';
+    document.getElementById('message').textContent = 'Please enter a valid API key.';
     return;
   }
-  
+
   await chrome.storage.sync.set({ apiKey: key, summaryLength, summaryStyle, customPrompt });
-  document.getElementById('message').textContent = 'Einstellungen gespeichert!';
+  document.getElementById('message').textContent = 'Settings saved!';
 });

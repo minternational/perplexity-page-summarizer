@@ -2,7 +2,7 @@
 <html lang="de" class="options">
   <head>
     <meta charset="UTF-8" />
-    <title>Optionen – API Key &amp; Zusammenfassungsoptionen</title>
+    <title>Options - API Key &amp; Summary options</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" />
     <link rel="stylesheet" href="styles.css" />
   </head>
@@ -10,18 +10,18 @@
     <div class="container">
       <h2>Optionen</h2>
       <label for="apiKey">Perplexity API Key:</label>
-      <input type="text" id="apiKey" placeholder="Dein API Key" />
+      <input type="text" id="apiKey" placeholder="Your API Key" />
 
-      <label for="summaryLength">Zusammenfassungslänge:</label>
+      <label for="summaryLength">Summary length:</label>
       <select id="summaryLength">
-        <option value="short">Kurz</option>
-        <option value="medium">Mittel</option>
-        <option value="long">Ausführlich</option>
+        <option value="short">Short</option>
+        <option value="medium">Medium</option>
+        <option value="long">In detail</option>
       </select>
 
-      <label for="summaryStyle">Zusammenfassungsstil:</label>
+      <label for="summaryStyle">Summary style:</label>
       <select id="summaryStyle">
-        <option value="paragraph">Fließtext</option>
+        <option value="paragraph">Continuous text</option>
         <option value="bullet">Bullet-Points</option>
       </select>
 
@@ -29,11 +29,11 @@
       <label for="customPrompt">System-Prompt (optional):</label>
       <textarea
         id="customPrompt"
-        placeholder="Gib hier deinen benutzerdefinierten System-Prompt ein. Verwende {length} und {style} als Platzhalter."
+        placeholder="Enter your user-defined system prompt here. Use {length} and {style} as placeholders."
       ></textarea>
 
       <div>
-        <button id="saveBtn">Speichern</button>
+        <button id="saveBtn">Save</button>
       </div>
       <p id="message"></p>
     </div>
