@@ -26,30 +26,6 @@ This project is a browser-based extension (Chrome Extension, manifest v3) that u
 └── styles.css
 ```
 
-### 📦 Installation
-
-1. clone **repository:**
-```bash
-git clone https://github.com/dein-username/pages-summarizer.git
-cd pages-summarizer
-```
-
-2. initialize **local Git repository:**
-```bash
-git init
-git add .
-git commit -m “Initial commit - Pages Summarizer Chrome Extension”
-```
-
-3. create a new repository on GitHub and copy the URL (e.g. `https://github.com/deinusername/pages-summarizer.git`).
-
-4. link your local repository to GitHub and publish the files:
-```bash
-git remote add origin https://github.com/deinusername/pages-summarizer.git
-git branch -M main
-git push -u origin main
-```
-
 ## Project description
 
 ### Pages Summarizer - Chrome Extension
@@ -59,7 +35,8 @@ A handy Chrome extension for automatically summarizing web page content and YouT
 - **Quick summary via context menu** (whole page or selected text).
 - **History of saved summaries**, including delete and export function.
 - **Customized options** (summary length, style, own prompt).
-- **Export of summaries as Markdown**.
+- **Chrome Context Menu** (right click on any webpage for a general or highlighted text summary)
+- **Export of summaries as Markdown or txt**.
 
 ### Tech stack
 - **Frontend:** HTML, CSS, JavaScript (Vanilla)
