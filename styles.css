@@ -1,0 +1,363 @@
+/* ================= Global Styles ================= */
+body {
+  font-family: 'Inter', sans-serif;
+  background: #f8f9fa;
+  margin: 0;
+  color: #333;
+}
+
+.container,
+.popup-container {
+  min-width: 500px;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+h2 {
+  font-weight: 500;
+}
+
+input,
+select,
+button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+}
+
+/* Global Button Styles: Initial transparent, nur farbige Border */
+button {
+  background: transparent;
+  border: 1px solid #1abc9c;
+  color: #000;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Hover: Hintergrund füllt sich mit der Borderfarbe */
+button:hover {
+  background: #1abc9c;
+}
+
+/* Summary Box */
+.summary-box {
+  min-height: 100px;
+  background: #f0f0f0;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: left;
+}
+
+/* ================= Options Page Styles ================= */
+html.options {
+  /* Variablen aus options.html */
+  --primary-bg: #ffffff;
+  --secondary-bg: #f2f4f7;
+  --accent: #1abc9c;
+  --text-color: #333;
+  --border-radius: 8px;
+  --transition: 0.3s;
+}
+
+html.options body {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  background: #f2f4f7;
+  padding-top: 40px;
+}
+
+html.options .container {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+}
+
+/* Spezifische Regel für Eingabefelder in options.html */
+html.options input[type='text'],
+html.options select,
+html.options textarea {
+  width: 95%;
+  margin-bottom: 25px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: var(--border-radius);
+  font-size: 16px;
+}
+
+html.options label {
+  font-size: 14px;
+}
+
+html.options textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+
+/* ================= Popup Page Styles ================= */
+html.popup *,
+html.popup *::before,
+html.popup *::after {
+  margin: 5px;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html.popup {
+  /* Variablen aus popup.html */
+  --primary-bg: #ffffff;
+  --secondary-bg: #f2f4f7;
+  --accent: #1abc9c;
+  --text-color: #333;
+  --border-radius: 12px;
+  --transition: 0.3s;
+}
+
+html.popup body {
+  font-family: 'Inter', sans-serif;
+  width: 600px;
+  height: 590px;
+  background: var(--primary-bg);
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+}
+
+html.popup #summary {
+  flex-grow: 1;
+  background: var(--secondary-bg);
+  border-radius: var(--border-radius);
+  padding: 15px;
+  overflow-y: auto;
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+html.popup .button-container,
+html.popup .followup-container {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 5px;
+}
+
+/* Popup Button Styles: Gleicher Effekt wie global */
+html.popup button {
+  flex: 1;
+  padding: 10px;
+  background: transparent;
+  border: 1px solid var(--accent);
+  border-radius: var(--border-radius);
+  color: var(--accent);
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+}
+
+html.popup button:hover {
+  background: var(--accent);
+  color: #000;
+}
+
+html.popup .followup-container input {
+  flex: 6;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: var(--border-radius);
+  font-size: 0.9rem;
+}
+
+html.popup .followup-container button {
+  flex: 1;
+  padding: 10px;
+  background: transparent;
+  border: 1px solid var(--accent);
+  border-radius: var(--border-radius);
+  color: var(--accent);
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+}
+
+html.popup .followup-container button:hover {
+  background: var(--accent);
+  color: #000;
+}
+
+html.popup #status {
+  text-align: center;
+  font-size: 0.75rem;
+  color: #555;
+  padding-bottom: 5px;
+}
+
+/* ================= History Page Styles ================= */
+html.history {
+  /* Variablen aus history.html */
+  --primary-bg: #ffffff;
+  --secondary-bg: #f2f4f7;
+  --accent: #1abc9c;
+  --text-color: #333;
+  --border-radius: 12px;
+  --transition: 0.3s;
+}
+
+html.history body {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Zentriert alle Inhalte horizontal */
+  background: var(--secondary-bg);
+  padding: 20px;
+  font-size: 0.9rem;
+}
+
+/* Jeder History-Eintrag als eigener, zentrierter Container */
+html.history .summary-entry {
+  width: 1000px; /* Doppelt so breit wie 500px */
+  background: var(--primary-bg);
+  padding: 15px 50px 15px 50px;
+  margin-bottom: 25px;
+  border-radius: var(--border-radius);
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Das Datum in der History */
+html.history .timestamp {
+  font-size: 0.75rem;
+  color: gray;
+  margin-bottom: 5px;
+}
+
+/* Container für die Buttons in jedem History-Eintrag, rechts ausgerichtet */
+html.history .entry-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-bottom: 5px;
+}
+
+/* Buttons in der History-Seite: Nur so breit wie der Inhalt */
+html.history button {
+  width: auto;
+}
+
+/* Spezielle Farben für die History-Buttons */
+html.history .delete-btn {
+  background: transparent;
+  border: 1px solid #e74c3c;
+  color: #e74c3c;
+}
+
+html.history .delete-btn:hover {
+  background: #e74c3c;
+  color: #000;
+}
+
+html.history .export-btn {
+  background: transparent;
+  border: 1px solid #3498db;
+  color: #3498db;
+}
+
+html.history .export-btn:hover {
+  background: #3498db;
+  color: #000;
+}
+
+@media (prefers-color-scheme: light) {
+  html.popup button,
+  html.popup .followup-container button {
+    color: #000;
+  }
+}
+
+/* ================= Dark Mode Overrides ================= */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #121212;
+    color: #e0e0e0;
+  }
+
+  .container,
+  .popup-container,
+  html.options .container,
+  html.history .summary-entry {
+    background: #1e1e1e;
+    color: #e0e0e0;
+  }
+
+  /* Für Eingabefelder (ohne Button, da wir eigene Button-Regeln definieren) */
+  input,
+  select {
+    background: #1e1e1e;
+    color: #e0e0e0;
+    border: 1px solid #444;
+  }
+
+  /* Global Dark Mode Button Styles: Transparenter Hintergrund, Border und Text in Accent */
+  button {
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    transition: background 0.3s, color 0.3s;
+  }
+
+  button:hover {
+    background: var(--accent);
+    color: #000;
+  }
+
+  /* Für das Popup */
+  html.popup {
+    --primary-bg: #1e1e1e;
+    --secondary-bg: #121212;
+    --accent: #1abc9c;
+    --text-color: #e0e0e0;
+  }
+
+  html.popup #summary {
+    background: var(--secondary-bg);
+    color: var(--text-color);
+  }
+
+  html.popup .followup-container input {
+    background: #333;
+    color: #e0e0e0;
+    border: 1px solid var(--accent);
+  }
+
+  html.popup #status {
+    color: #aaa;
+  }
+
+  /* Für die Options-Seite */
+  html.options {
+    --primary-bg: #1e1e1e;
+    --secondary-bg: #121212;
+    --accent: #1abc9c;
+    --text-color: #e0e0e0;
+    background: var(--secondary-bg);
+  }
+
+  /* Für die History-Seite */
+  html.history {
+    --primary-bg: #1e1e1e;
+    --secondary-bg: #121212;
+    --accent: #1abc9c;
+    --text-color: #e0e0e0;
+    background: var(--secondary-bg);
+  }
+
+  html.history .timestamp {
+    color: #aaa;
+  }
+}

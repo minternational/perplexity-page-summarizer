@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="de" class="options">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Optionen – API Key &amp; Zusammenfassungsoptionen</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2>Optionen</h2>
+      <label for="apiKey">Perplexity API Key:</label>
+      <input type="text" id="apiKey" placeholder="Dein API Key" />
+
+      <label for="summaryLength">Zusammenfassungslänge:</label>
+      <select id="summaryLength">
+        <option value="short">Kurz</option>
+        <option value="medium">Mittel</option>
+        <option value="long">Ausführlich</option>
+      </select>
+
+      <label for="summaryStyle">Zusammenfassungsstil:</label>
+      <select id="summaryStyle">
+        <option value="paragraph">Fließtext</option>
+        <option value="bullet">Bullet-Points</option>
+      </select>
+
+      <!-- Neues Feld für den benutzerdefinierten System-Prompt -->
+      <label for="customPrompt">System-Prompt (optional):</label>
+      <textarea
+        id="customPrompt"
+        placeholder="Gib hier deinen benutzerdefinierten System-Prompt ein. Verwende {length} und {style} als Platzhalter."
+      ></textarea>
+
+      <div>
+        <button id="saveBtn">Speichern</button>
+      </div>
+      <p id="message"></p>
+    </div>
+    <script src="options.js"></script>
+  </body>
+</html>

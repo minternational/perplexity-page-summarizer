@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="de" class="popup">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Summarizer</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="summary" placeholder="Summary appears here..."></div>
+    <div class="button-container">
+      <button id="summarizeBtn">Summarize</button>
+      <button id="deleteBtn">Delete</button>
+      <button id="copyBtn">Copy</button>
+      <button id="exportBtn">Export</button>
+      <button id="historyBtn">Historie</button>
+    </div>
+    <div class="followup-container">
+      <input type="text" id="followupInput" placeholder="Ask follow-up question..." />
+      <button id="followupBtn">Ask</button>
+    </div>
+    <p id="status">Made with ♥ from Cologne</p>
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>
